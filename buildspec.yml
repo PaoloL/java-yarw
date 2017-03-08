@@ -11,7 +11,7 @@ phases:
       - mvn package
 artifacts:
   files:
-    - target/name_day_greeter-jar-with-dependencies.jar
+    - target/MotorVehicle-jar-with-dependencies.jar
     - docker/buildspec.yml
     - docker/Dockerfile
   discard-paths: yes
