@@ -1,0 +1,17 @@
+version: 0.1
+
+phases:
+  build:
+    commands:
+      - echo Build started on `date`
+      - mvn test
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - mvn package
+artifacts:
+  files:
+    - target/name_day_greeter-jar-with-dependencies.jar
+    - docker/buildspec.yml
+    - docker/Dockerfile
+  discard-paths: yes
