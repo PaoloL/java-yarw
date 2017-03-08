@@ -17,24 +17,27 @@ In order to simplify development of RESTful Web services and their clients in Ja
 
 Starting with Java SE 6, Java runtime ships with a built-in lightweight HTTP server. Jersey offers integration with this Java SE HTTP server through the jersey-container-jdk-http container extension module.
 
-`System.out.println("Starting Jersey REST-full Service with JDK HTTP Server ...");
-        URI baseUri = UriBuilder.fromUri("http://localhost/v1").port(8080).build();
-        ResourceConfig config = new ResourceConfig();
-        config.register(new BikeResource(client));
-        config.register(new CarResource(client));
-        HttpServer server = JdkHttpServerFactory.createHttpServer(baseUri, config);
-`
+```
+System.out.println("Starting Jersey REST-full Service with JDK HTTP Server ...");
+URI baseUri = UriBuilder.fromUri("http://localhost/v1").port(8080).build();
+ResourceConfig config = new ResourceConfig();
+config.register(new BikeResource(client));
+config.register(new CarResource(client));
+HttpServer server = JdkHttpServerFactory.createHttpServer(baseUri, config);
+```
 ### Jackson
 
 [Jackson](https://github.com/FasterXML/jackson) Project, formerly known as the standard JSON library for Java (or JVM platform in general), or, as the "best JSON parser for Java." Or simply as "JSON for Java."
 
 To use Jackson 2.x as your JSON provider you need to add jersey-media-json-jackson module to your pom.xml file:
 
-`<dependency>
+```
+<dependency>
     <groupId>org.glassfish.jersey.media</groupId>
     <artifactId>jersey-media-json-jackson</artifactId>
     <version>2.25.1</version>
-</dependency>`
+</dependency>
+```
 
 ### DynamoDB Mapper
 
@@ -44,8 +47,9 @@ To use, define a domain class that represents an item in a DynamoDB table and an
 [More Info](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/datamodeling/DynamoDBMapper.html)
 
 ## Use
-`mvn Clean`
-`mvn compile`
-`mvn package`
-`java -jar`
-`MotorVehicle-jar-with-dependencies.jar`
+```
+mvn clean
+mvn compile
+mvn package
+java -jar MotorVehicle-jar-with-dependencies.jar
+```
