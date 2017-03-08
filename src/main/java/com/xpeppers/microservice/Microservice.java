@@ -6,6 +6,7 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.sun.net.httpserver.HttpServer;
 import com.xpeppers.motorvehicle.services.BikeResource;
 import com.xpeppers.motorvehicle.services.CarResource;
+import com.xpeppers.motorvehicle.services.Ping;
 import java.net.URI;
 import javax.ws.rs.core.UriBuilder;
 import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
@@ -22,6 +23,7 @@ public class Microservice  {
         System.out.println("Starting Jersey REST-full Service with JDK HTTP Server ...");
         URI baseUri = UriBuilder.fromUri("http://localhost/v1").port(8080).build();
         ResourceConfig config = new ResourceConfig();
+         config.register(new Ping());
         config.register(new BikeResource(client));
         config.register(new CarResource(client));
         HttpServer server = JdkHttpServerFactory.createHttpServer(baseUri, config);
