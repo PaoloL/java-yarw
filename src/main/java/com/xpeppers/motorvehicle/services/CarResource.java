@@ -46,6 +46,7 @@ public class CarResource {
     @Produces(MediaType.APPLICATION_JSON)
     public String getCars() {
         //TODO return proper representation object
+        System.out.println("GET /cars/{id}");
         throw new UnsupportedOperationException();
     }
 
@@ -56,5 +57,6 @@ public class CarResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void putCars(String content) {
+        System.out.println("PUT /cars/{id}");
     }
 }
