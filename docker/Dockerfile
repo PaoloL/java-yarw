@@ -1,8 +1,8 @@
-FROM pdincau/workshop_java_8
+FROM java:8
 
 RUN mkdir /app
 
-COPY $CODEBUILD_SRC_DIR/target/MotorVehicles-jar-with-dependencies.jar /app/MotorVehicle.jar
+COPY target/MotorVehicles-jar-with-dependencies.jar /app/MotorVehicle.jar
 WORKDIR /app
 
 EXPOSE 8080

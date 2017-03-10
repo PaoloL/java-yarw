@@ -1,6 +1,5 @@
 package com.xpeppers.microservice;
         
-import com.amazonaws.auth.profile.ProfileCredentialsProvider;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.sun.net.httpserver.HttpServer;
@@ -19,11 +18,22 @@ public class Microservice  {
     
     public static void main(String[] args)
     {
-        client.withRegion(Regions.EU_WEST_1);
-        System.out.println("Starting Jersey REST-full Service with JDK HTTP Server ...");
+        if (args[0].equals("local"))
+        {
+            System.out.println("Starting local version of microservices"
+                    + "(Do you need a DynamoDB local)");
+            System.out.println("http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html");
+            System.out.println("Starting Jersey REST-full Service with JDK HTTP Server ...");
+            client.withEndpoint("http://localhost:8000");
+        }
+        else 
+        {
+            System.out.println("Starting Jersey REST-full Service with JDK HTTP Server ...");
+            client.withRegion(Regions.EU_WEST_1);
+        }
         URI baseUri = UriBuilder.fromUri("http://localhost/v1").port(8080).build();
         ResourceConfig config = new ResourceConfig();
-         config.register(new Ping());
+        config.register(new Ping());
         config.register(new BikeResource(client));
         config.register(new CarResource(client));
         HttpServer server = JdkHttpServerFactory.createHttpServer(baseUri, config);

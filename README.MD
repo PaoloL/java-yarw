@@ -46,10 +46,29 @@ To use, define a domain class that represents an item in a DynamoDB table and an
 
 [More Info](http://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/datamodeling/DynamoDBMapper.html)
 
-## Use
+## Build and Package
+
 ```
 mvn clean
 mvn compile
 mvn package
-java -jar MotorVehicle-jar-with-dependencies.jar
+```
+## Run
+
+You can execute the service in local mode with args "local". In this case you need a DynamoDB on local machine
+```
+java -jar MotorVehicle-jar-with-dependencies.jar [local]
+```
+
+## Docker
+
+DynamoDB
+```
+docker pull peopleperhour/dynamodb
+docker run -d --name dynamodb peopleperhour/dynamodb
+```
+Service
+```
+docker pull platella/java-yarw
+docker run -d --name java-yarw platella/java-yarw
 ```
