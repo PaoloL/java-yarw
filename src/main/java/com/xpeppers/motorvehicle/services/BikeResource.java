@@ -27,7 +27,9 @@ import javax.ws.rs.core.Response;
  * REST Web Service
  *
  * @author maverick
- */
+ * REF: https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html
+ * */
+
 @Path("bikes")
 public class BikeResource {
 
