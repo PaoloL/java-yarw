@@ -1,17 +1,17 @@
 version: 0.1
 
 phases:
+  pre_build:
+    commands:
+      - echo "Login to ECR"
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION)
   build:
     commands:
-      - echo "Start command 1"
-      - echo "Start command 2"
+      - echo "Docker build"
+      - docker build -t $IMAGE_TAG .
+      - echo "Docker tag"
+      - docker tag $IMAGE_TAG:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_TAG:latest
   post_build:
     commands:
-      - echo "Start command 3"
-      - echo "Start command 4"
-artifacts:
-  files:
-    - target/MotorVehicles-jar-with-dependencies.jar
-    - docker/buildspec.yml
-    - docker/Dockerfile
-  discard-paths: yes
+      - echo "Docker push"
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_TAG:latest
