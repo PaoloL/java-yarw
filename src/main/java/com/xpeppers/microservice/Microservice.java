@@ -15,7 +15,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 public class Microservice  {
     
-    static AmazonDynamoDBClient client = new AmazonDynamoDBClient(new ProfileCredentialsProvider("default"));
+    static AmazonDynamoDBClient client = new AmazonDynamoDBClient();
     
     public static void main(String[] args)
     {
