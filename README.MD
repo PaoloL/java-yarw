@@ -55,7 +55,8 @@ mvn package
 ```
 ## Run
 
-You can execute the service in local mode with args "local". In this case you need a DynamoDB on local machine
+You can execute the service in local mode with args "local".
+In this case you need a DynamoDB on local machine and you need to create a table before
 ```
 java -jar MotorVehicle-jar-with-dependencies.jar [local]
 ```
@@ -70,5 +71,5 @@ docker run -d --name dynamodb peopleperhour/dynamodb
 Service
 ```
 docker pull platella/java-yarw
-docker run -d --name java-yarw platella/java-yarw
+docker run -d --name java-yarw -p 8080:8080 platella/java-yarw
 ```

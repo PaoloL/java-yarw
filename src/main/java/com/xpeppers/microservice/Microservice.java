@@ -18,17 +18,17 @@ public class Microservice  {
     
     public static void main(String[] args)
     {
-        if (args[0].equals("local"))
+        if ((args.length == 1) && (args[0].equals("local")))
         {
-            System.out.println("Starting local version of microservices"
-                    + "(Do you need a DynamoDB local)");
-            System.out.println("http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html");
             System.out.println("Starting Jersey REST-full Service with JDK HTTP Server ...");
+            System.out.println("DynamoDB on local machine");
+            System.out.println("http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html");
             client.withEndpoint("http://localhost:8000");
         }
         else 
         {
             System.out.println("Starting Jersey REST-full Service with JDK HTTP Server ...");
+            System.out.println("DynamoDB on AWS");
             client.withRegion(Regions.EU_WEST_1);
         }
         URI baseUri = UriBuilder.fromUri("http://localhost/v1").port(8080).build();
