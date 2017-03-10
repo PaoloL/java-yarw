@@ -1,22 +1,17 @@
 version: 0.1
 
 phases:
-  pre_build:
-    commands:
-      - ls $CODEBUILD_SRC_DIR
-      #- echo Logging in to Amazon ECR ...
-      #- $(aws ecr get-login --region $AWS_DEFAULT_REGION)
   build:
     commands:
-      - echo Building the Docker image
-      #- docker build -t $IMAGE_TAG .
-      #- docker tag $IMAGE_TAG:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_TAG:latest
+      - echo "Start command 1"
+      - echo "Start command 2"
   post_build:
     commands:
-      #- echo Build completed on `date`
-      #- echo Pushing the Docker image...
-      #- docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_TAG:latest
-  artifacts:
-    files:
-      - Dockerfile
-    discard-paths: yes
+      - echo "Start command 3"
+      - echo "Start command 4"
+artifacts:
+  files:
+    - target/MotorVehicles-jar-with-dependencies.jar
+    - docker/buildspec.yml
+    - docker/Dockerfile
+  discard-paths: yes
