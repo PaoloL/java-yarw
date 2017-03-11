@@ -2,7 +2,7 @@ FROM java:8
 
 RUN mkdir /app
 
-COPY $CODEBUILD_SRC_DIR/target/MotorVehicles-jar-with-dependencies.jar /app/MotorVehicles.jar
+COPY $CODEBUILD_SRC_DIR/MotorVehicles-jar-with-dependencies.jar /app/MotorVehicles.jar
 WORKDIR /app
 
 EXPOSE 8080
